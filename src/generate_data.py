@@ -1,4 +1,5 @@
 """
+generate_data.py
 
 Generates 3 synthetic CSVs simulating a real finance-ops reconciliation batch:
   - razorpay_settlements.csv
@@ -238,19 +239,21 @@ def build_records():
         idx += 1
 
     # Build the batch per the documented composition (docs/noise_model.md)
-    for _ in range(38):
+    # Scaled ~4.3x from the original 70-case pilot batch, same proportions,
+    # to strengthen statistical significance of match-rate / precision metrics.
+    for _ in range(160):
         new_clean_case()
-    for _ in range(8):
+    for _ in range(34):
         new_partial_settlement_case()
-    for _ in range(8):
+    for _ in range(34):
         new_fee_adjusted_case()
-    for _ in range(6):
+    for _ in range(26):
         new_date_lagged_case()
-    for _ in range(4):
+    for _ in range(17):
         new_duplicate_utr_case()
-    for _ in range(3):
+    for _ in range(13):
         new_missing_bank_entry_case()
-    for _ in range(3):
+    for _ in range(13):
         new_missing_ledger_entry_case()
 
     return settlements, bank_rows, ledger_rows

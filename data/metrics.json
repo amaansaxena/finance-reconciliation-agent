@@ -1,0 +1,19 @@
+{
+  "total_settlements": 314,
+  "matched_count": 267,
+  "match_rate_pct": 85.03,
+  "exception_count": 60,
+  "exception_rate_pct": 19.11,
+  "average_confidence": 92.47,
+  "matches_by_reason": {
+    "exact_match": 173,
+    "partial_settlement": 34,
+    "fee_deduction": 34,
+    "date_lag": 26
+  },
+  "exceptions_by_reason": {
+    "ambiguous_duplicate_utr": 34,
+    "no_bank_entry": 13,
+    "no_ledger_entry": 13
+  }
+}

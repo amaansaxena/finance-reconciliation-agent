@@ -1,0 +1,362 @@
+[
+  {
+    "payment_id": "pay_00255",
+    "utr": "UTR1082390137255",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00256",
+    "utr": "UTR1082390137255",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00257",
+    "utr": "UTR0918112167257",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00258",
+    "utr": "UTR0918112167257",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00259",
+    "utr": "UTR3540008640259",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00260",
+    "utr": "UTR3540008640259",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00261",
+    "utr": "UTR3346051834261",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00262",
+    "utr": "UTR3346051834261",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00263",
+    "utr": "UTR7603595588263",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00264",
+    "utr": "UTR7603595588263",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00265",
+    "utr": "UTR4097598661265",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00266",
+    "utr": "UTR4097598661265",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00267",
+    "utr": "UTR1006281537267",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00268",
+    "utr": "UTR1006281537267",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00269",
+    "utr": "UTR5907571155269",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00270",
+    "utr": "UTR5907571155269",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00271",
+    "utr": "UTR2534346021271",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00272",
+    "utr": "UTR2534346021271",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00273",
+    "utr": "UTR6042337388273",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00274",
+    "utr": "UTR6042337388273",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00275",
+    "utr": "UTR2461287788275",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00276",
+    "utr": "UTR2461287788275",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00277",
+    "utr": "UTR7551820003277",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00278",
+    "utr": "UTR7551820003277",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00279",
+    "utr": "UTR6244945382279",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00280",
+    "utr": "UTR6244945382279",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00281",
+    "utr": "UTR7222265896281",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00282",
+    "utr": "UTR7222265896281",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00283",
+    "utr": "UTR2839643324283",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00284",
+    "utr": "UTR2839643324283",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00285",
+    "utr": "UTR9855264323285",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00286",
+    "utr": "UTR9855264323285",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00287",
+    "utr": "UTR5208843104287",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00288",
+    "utr": "UTR5208843104287",
+    "reason": "ambiguous_duplicate_utr",
+    "detail": "UTR shared by 2 settlements; cannot disambiguate which bank credit belongs to which."
+  },
+  {
+    "payment_id": "pay_00289",
+    "utr": "UTR3766493316289",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00290",
+    "utr": "UTR0128716303290",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00291",
+    "utr": "UTR4835410656291",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00292",
+    "utr": "UTR5832081245292",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00293",
+    "utr": "UTR1810393042293",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00294",
+    "utr": "UTR7470664930294",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00295",
+    "utr": "UTR9875007283295",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00296",
+    "utr": "UTR5182275389296",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00297",
+    "utr": "UTR3199427175297",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00298",
+    "utr": "UTR7736765018298",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00299",
+    "utr": "UTR4354166366299",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00300",
+    "utr": "UTR7485627467300",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00301",
+    "utr": "UTR3415964200301",
+    "reason": "no_bank_entry",
+    "detail": "Settlement has no corresponding bank statement row for this UTR."
+  },
+  {
+    "payment_id": "pay_00302",
+    "utr": "UTR6105712292302",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00303",
+    "utr": "UTR8883641880303",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00304",
+    "utr": "UTR1346808149304",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00305",
+    "utr": "UTR6448117981305",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00306",
+    "utr": "UTR8613306891306",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00307",
+    "utr": "UTR8406085772307",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00308",
+    "utr": "UTR5664746618308",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00309",
+    "utr": "UTR0618880429309",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00310",
+    "utr": "UTR5380450439310",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00311",
+    "utr": "UTR1450066352311",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00312",
+    "utr": "UTR3024564671312",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00313",
+    "utr": "UTR0367531848313",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  },
+  {
+    "payment_id": "pay_00314",
+    "utr": "UTR1619347714314",
+    "reason": "no_ledger_entry",
+    "detail": "Settlement and bank credit matched, but no internal ledger record exists for this payment_id."
+  }
+]
