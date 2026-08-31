@@ -1,5 +1,4 @@
 """
-generate_data.py
 
 Generates 3 synthetic CSVs simulating a real finance-ops reconciliation batch:
   - razorpay_settlements.csv
