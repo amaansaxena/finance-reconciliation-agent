@@ -29,6 +29,6 @@ be accused of being cherry-picked.
 ## What "resolved" vs "exception" means downstream
 - Clean, partial, fee-adjusted, and date-lagged cases should all be resolvable by
   the matcher (with varying confidence).
-- Duplicate UTR and missing-entry cases are genuine exceptions — the matcher is
+- Duplicate UTR and missing-entry cases are genuine exceptions i.e. the matcher is
   expected to flag these, not force a match. A good pipeline recognizes these
   rather than resolving them incorrectly.
