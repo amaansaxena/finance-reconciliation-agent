@@ -2,3 +2,4 @@ faker
 pandas
 google-genai
 python-dotenv
+streamlit
