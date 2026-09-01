@@ -1,0 +1,34 @@
+{
+  "per_category_accuracy": {
+    "clean_match": {
+      "correct": 160,
+      "total": 160
+    },
+    "partial_settlement": {
+      "correct": 34,
+      "total": 34
+    },
+    "fee_deduction": {
+      "correct": 34,
+      "total": 34
+    },
+    "date_lag": {
+      "correct": 26,
+      "total": 26
+    },
+    "ambiguous_duplicate_utr": {
+      "correct": 34,
+      "total": 34
+    },
+    "no_bank_entry": {
+      "correct": 13,
+      "total": 13
+    },
+    "no_ledger_entry": {
+      "correct": 13,
+      "total": 13
+    }
+  },
+  "misclassified_count": 0,
+  "misclassified_records": []
+}

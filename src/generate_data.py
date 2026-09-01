@@ -25,6 +25,11 @@ Faker.seed(SEED)
 OUT_DIR = Path(__file__).resolve().parent.parent / "data"
 OUT_DIR.mkdir(exist_ok=True)
 
+# Tracks the TRUE case type behind each payment_id, for validation only.
+# This is never fed to the matcher - it's the answer key used afterward
+# to check the matcher's real per-category accuracy (see validate.py).
+GROUND_TRUTH = []
+
 BASE_DATE = date(2026, 8, 1)
 
 FEE_RATE = 0.02      # 2% platform fee
@@ -87,6 +92,7 @@ def build_records():
             "invoice_id": inv, "expected_amount": amount,
             "payment_id": pid, "status": "open"
         })
+        GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "clean_match"})
         idx += 1
 
     def new_partial_settlement_case():
@@ -119,6 +125,7 @@ def build_records():
             "invoice_id": inv, "expected_amount": amount,
             "payment_id": pid, "status": "open"
         })
+        GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "partial_settlement"})
         idx += 1
 
     def new_fee_adjusted_case():
@@ -144,6 +151,7 @@ def build_records():
             "invoice_id": inv, "expected_amount": amount,
             "payment_id": pid, "status": "open"
         })
+        GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "fee_deduction"})
         idx += 1
 
     def new_date_lagged_case():
@@ -169,6 +177,7 @@ def build_records():
             "invoice_id": inv, "expected_amount": amount,
             "payment_id": pid, "status": "open"
         })
+        GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "date_lag"})
         idx += 1
 
     def new_duplicate_utr_case():
@@ -190,6 +199,7 @@ def build_records():
                 "invoice_id": inv, "expected_amount": amount,
                 "payment_id": pid, "status": "open"
             })
+            GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "ambiguous_duplicate_utr"})
             idx += 1
         # only one bank credit exists for the shared UTR -> ambiguous
         bank_rows.append({
@@ -216,6 +226,7 @@ def build_records():
             "invoice_id": inv, "expected_amount": amount,
             "payment_id": pid, "status": "open"
         })
+        GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "no_bank_entry"})
         idx += 1
 
     def new_missing_ledger_entry_case():
@@ -236,6 +247,7 @@ def build_records():
             "narration": f"NEFT CR {utr}"
         })
         # no ledger row created at all
+        GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "no_ledger_entry"})
         idx += 1
 
     # Build the batch per the documented composition (docs/noise_model.md)
@@ -275,6 +287,8 @@ def main():
                ["utr", "credited_amount", "value_date", "narration"])
     write_csv(OUT_DIR / "internal_ledger.csv", ledger_rows,
                ["invoice_id", "expected_amount", "payment_id", "status"])
+    write_csv(OUT_DIR / "ground_truth.csv", GROUND_TRUTH,
+               ["payment_id", "true_case_type"])
 
     print(f"Generated {len(settlements)} settlement records")
     print(f"Generated {len(bank_rows)} bank statement rows")
