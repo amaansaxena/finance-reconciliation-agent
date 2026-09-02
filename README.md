@@ -1,0 +1,203 @@
+# AI Finance Controller — Multi-Source Reconciliation Agent
+
+**Razorpay AI Buildathon — Track 04: AI Finance Controller**
+
+A bounded, auditable agent that reconciles Razorpay settlements against bank
+statements and internal ledgers — matching what it can with a documented
+confidence score, and honestly flagging what it can't, instead of guessing.
+
+**Live dashboard:** [add your Streamlit Cloud URL here]
+**Repo:** [add your GitHub URL here]
+
+---
+
+## The problem
+
+Payment reconciliation is still largely manual. A settlement from Razorpay,
+the corresponding bank credit, and the internal ledger entry should all
+agree — but in practice they rarely line up perfectly: payments get split
+into partial settlements, fees and taxes shift the credited amount, bank
+credits land a day or two late, reference numbers get duplicated, and
+records sometimes go missing entirely. Someone still has to catch all of
+this by hand.
+
+## What this agent does
+
+It performs **3-way reconciliation** — not the more common 2-way
+(settlement vs. bank) — across settlements, bank statements, and internal
+ledgers. For every settlement, it either:
+
+- **Resolves it** with a specific, documented reason (exact match, fee
+  deduction, date lag, or partial settlement) and a confidence score, or
+- **Flags it as an exception** with a clear reason code, when it can't be
+  safely resolved — never a forced or guessed match.
+
+For the resolved-but-ambiguous cases, an LLM generates a plain-language
+explanation of *why* the match makes sense — but that explanation is
+**programmatically validated against the actual numbers** before being
+accepted. The LLM never makes or overrides a match decision; it only
+explains one the deterministic rule engine already made, and even then,
+only if the explanation checks out.
+
+## Architecture
+
+```
+razorpay_settlements.csv ─┐
+bank_statement.csv        ├─► Rule-Based Matcher ─► matches.csv
+internal_ledger.csv      ─┘         │                exceptions.json
+                                     │
+                          (ambiguous, resolved cases only)
+                                     │
+                                     ▼
+                          LLM Explainer (Gemini)
+                                     │
+                          Programmatic Validator
+                             (checks LLM output
+                              against real numbers)
+                                 /        \
+                          accepted      escalated to
+                                        llm_review_needed.json
+                                     │
+                                     ▼
+                          Streamlit Dashboard
+                     (Overview / Matches / Exceptions /
+                            LLM Explanations)
+```
+
+**Why the LLM is bounded, not autonomous:** in a financial context, an
+LLM autonomously deciding whether two records match is a liability, not a
+feature. Every match/no-match decision here comes from deterministic,
+documented rules — fixed tolerances, fixed date-lag windows, fixed
+confidence tiers. The LLM's only job is to explain a decision that's
+already been made, and its explanation is fact-checked before anyone
+(human or dashboard) sees it as "accepted."
+
+## The matching rules
+
+Checked in order, first match wins:
+
+| Tier | Condition | Confidence |
+|---|---|---|
+| Exact match | Same UTR, same amount, same date | 100% (with ledger) / 90% (without) |
+| Fee deduction | Same UTR, bank amount = settlement − fee − tax | 85% / 75% |
+| Date lag | Same UTR, same amount, bank date +1/+2 days | 80% / 70% |
+| Partial settlement | Same UTR, multiple bank rows summing to settlement amount | 75% / 65% |
+
+Anything that doesn't fit becomes an exception:
+
+| Exception | Reason |
+|---|---|
+| `ambiguous_duplicate_utr` | Same UTR used by 2+ settlements — can't disambiguate |
+| `no_bank_entry` | Settlement has no corresponding bank credit at all |
+| `no_ledger_entry` | Settlement + bank matched, but no ledger record exists |
+| `unresolved` | Doesn't fit any known pattern |
+
+## Results (on a 314-record synthetic batch)
+
+- **Match rate: 85.0%** (267/314) at the settlement↔bank level
+- **Exception rate: 19.1%** (60/314) — honestly flagged, never forced
+- **Average match confidence: 92.5%**
+- **Per-category accuracy vs. ground truth: 100%** across all 7 documented
+  case types (validated in `validate_matcher.py` — see below)
+- **LLM explanation accuracy: ~94%** of Gemini-generated explanations for
+  ambiguous cases passed programmatic validation against the real numbers
+
+*Note: `no_ledger_entry` cases (13 of the 60 exceptions) are also counted
+among the 267 matches — they resolved correctly at the bank level but
+couldn't be confirmed by the ledger, so they're intentionally flagged at
+both layers rather than hidden.*
+
+## The dataset — and why it isn't cherry-picked
+
+The 314-record batch is entirely synthetic, generated by
+`src/generate_data.py` with a **fixed random seed** and a **documented
+noise model** (`docs/noise_model.md`) written *before* any matching logic
+was built. The case-type proportions were fixed upfront, not tuned
+afterward to flatter the results — anyone can rerun the generator and get
+the identical batch back.
+
+It's a deliberate simplification, not a real transaction distribution —
+amounts are uniformly randomized rather than following real-world
+clustering, and it doesn't model every real-world edge case (refunds,
+chargebacks, timezone issues). What it does model faithfully is the core
+set of reconciliation failure modes seen in real payment operations:
+partial settlements, fee/tax adjustments, date lags, and data-quality
+issues like duplicate references.
+
+## Validation methodology
+
+Because the data generator is self-authored, every record's true case
+type is known in advance (`data/ground_truth.csv`, generated alongside
+the data but never given to the matcher). `src/validate_matcher.py`
+compares the matcher's actual output against this ground truth and
+produces a per-category confusion matrix — not just an aggregate match
+rate. This is what makes the 100% accuracy claim checkable rather than
+asserted: it's a record-by-record comparison, not a summary number.
+
+## Tech stack
+
+- **Data generation & matching:** Python (pandas-free core logic, `faker`
+  for realistic synthetic fields)
+- **LLM layer:** Google Gemini API (`gemini-3.5-flash-lite`), via the
+  `google-genai` SDK
+- **Dashboard:** Streamlit, deployed on Streamlit Community Cloud
+- **No database** — the pipeline is stateless and file-based, appropriate
+  for a batch reconciliation workload of this size
+
+## Running it locally
+
+```bash
+git clone <this-repo>
+cd finance-reconciliation-agent
+python -m venv venv
+source venv/bin/activate   # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+
+# Generate the synthetic dataset
+python src/generate_data.py
+
+# Run the rule-based matcher
+python src/matcher.py
+
+# Validate the matcher against ground truth
+python src/validate_matcher.py
+
+# Generate LLM explanations for ambiguous cases (requires a free Gemini API
+# key from aistudio.google.com in a .env file: GEMINI_API_KEY=...)
+python src/llm_explainer.py --dry-run   # test without an API key first
+python src/llm_explainer.py             # live run
+
+# Launch the dashboard
+streamlit run src/dashboard.py
+```
+
+## Known limitations
+
+- Synthetic data only — not tested against real, messier transaction
+  distributions or edge cases outside the 7 documented failure modes.
+- No authentication, database, or concurrency handling — this is a
+  hackathon-grade proof of concept, not a production system.
+- The LLM explanation layer currently processes cases sequentially with
+  rate-limit pacing; a production version would batch or parallelize
+  calls within provider rate limits.
+- A production deployment with real financial data would need a paid,
+  private LLM tier rather than a free tier (which may use prompts for
+  training), plus proper secrets management and audit-log retention.
+
+## Repository structure
+
+```
+finance-reconciliation-agent/
+├── data/                  # generated datasets and pipeline outputs
+├── docs/
+│   └── noise_model.md     # dataset design rationale
+├── src/
+│   ├── generate_data.py   # synthetic data generator (seeded, reproducible)
+│   ├── matcher.py         # rule-based matching engine
+│   ├── validate_matcher.py# ground-truth validation + confusion matrix
+│   ├── llm_explainer.py   # bounded LLM explanation + validation layer
+│   ├── dashboard.py       # Streamlit dashboard
+│   └── dashboard_data.py  # data loading layer for the dashboard
+├── requirements.txt
+└── README.md
+```
