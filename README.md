@@ -3,11 +3,10 @@
 **Razorpay AI Buildathon — Track 04: AI Finance Controller**
 
 A bounded, auditable agent that reconciles Razorpay settlements against bank
-statements and internal ledgers — matching what it can with a documented
+statements and internal ledgers, matching what it can with a documented
 confidence score, and honestly flagging what it can't, instead of guessing.
 
-**Live dashboard:** [add your Streamlit Cloud URL here]
-**Repo:** [add your GitHub URL here]
+**Live dashboard:** https://finance-reconciliation-agent-iafmigprsf2gmessnp2jgf.streamlit.app/
 
 ---
 
@@ -15,7 +14,7 @@ confidence score, and honestly flagging what it can't, instead of guessing.
 
 Payment reconciliation is still largely manual. A settlement from Razorpay,
 the corresponding bank credit, and the internal ledger entry should all
-agree — but in practice they rarely line up perfectly: payments get split
+agree but in practice they rarely line up perfectly. Payments get split
 into partial settlements, fees and taxes shift the credited amount, bank
 credits land a day or two late, reference numbers get duplicated, and
 records sometimes go missing entirely. Someone still has to catch all of
@@ -23,20 +22,20 @@ this by hand.
 
 ## What this agent does
 
-It performs **3-way reconciliation** — not the more common 2-way
-(settlement vs. bank) — across settlements, bank statements, and internal
+It performs **3-way reconciliation** not the more common 2-way
+(settlement vs. bank) across settlements, bank statements, and internal
 ledgers. For every settlement, it either:
 
 - **Resolves it** with a specific, documented reason (exact match, fee
   deduction, date lag, or partial settlement) and a confidence score, or
 - **Flags it as an exception** with a clear reason code, when it can't be
-  safely resolved — never a forced or guessed match.
+  safely resolved never a forced or guessed match.
 
-For the resolved-but-ambiguous cases, an LLM generates a plain-language
-explanation of *why* the match makes sense — but that explanation is
+For the resolved but unclear cases, an LLM generates a plain-language
+explanation of *why* the match makes sense but that explanation is
 **programmatically validated against the actual numbers** before being
-accepted. The LLM never makes or overrides a match decision; it only
-explains one the deterministic rule engine already made, and even then,
+accepted. The LLM never makes or overrides a match decision as it only
+explains one the deterministic rule engine already made and even then
 only if the explanation checks out.
 
 ## Architecture
@@ -67,7 +66,7 @@ internal_ledger.csv      ─┘         │                exceptions.json
 **Why the LLM is bounded, not autonomous:** in a financial context, an
 LLM autonomously deciding whether two records match is a liability, not a
 feature. Every match/no-match decision here comes from deterministic,
-documented rules — fixed tolerances, fixed date-lag windows, fixed
+documented rules fixed tolerances, fixed date-lag windows, fixed
 confidence tiers. The LLM's only job is to explain a decision that's
 already been made, and its explanation is fact-checked before anyone
 (human or dashboard) sees it as "accepted."
