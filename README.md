@@ -115,7 +115,7 @@ was built. The case-type proportions were fixed upfront, not tuned
 afterward to flatter the results anyone can rerun the generator and get
 the identical batch back.
 
-It's a deliberate simplification, not a real transaction distribution —
+It's a deliberate simplification, not a real transaction distribution
 amounts are uniformly randomized rather than following real-world
 clustering, and it doesn't model every real-world edge case (refunds,
 chargebacks, timezone issues). What it does model faithfully is the core
