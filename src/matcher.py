@@ -1,25 +1,3 @@
-"""
-matcher.py
-
-Rule-based 3-way reconciliation matcher.
-Reads razorpay_settlements.csv, bank_statement.csv, internal_ledger.csv,
-and produces:
-  - matches.csv    : resolved cases with confidence score + reason code
-  - exceptions.json: unresolved/ambiguous cases with reason code
-
-Matching tiers (highest confidence first):
-  1. exact_match          (100%) - same UTR, same amount, same date, ledger confirmed
-  2. fee_deduction         (85%) - same UTR, bank amount = settlement amount - fee - tax
-  3. date_lag              (80%) - same UTR, same amount, bank value_date is +1/+2 days
-  4. partial_settlement    (75%) - same UTR, multiple bank rows summing to settlement amount
-  5. ambiguous_duplicate_utr (exception) - UTR shared by 2+ settlements, can't disambiguate
-  6. no_bank_entry         (exception) - settlement has no corresponding bank row
-  7. no_ledger_entry       (exception) - settlement+bank matched, but no ledger record
-  8. unresolved            (exception) - fallback, doesn't fit any known pattern
-
-No LLM involved in this script - matching decisions are fully deterministic and auditable.
-"""
-
 import json
 import csv
 from pathlib import Path

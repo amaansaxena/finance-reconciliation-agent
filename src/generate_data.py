@@ -1,15 +1,3 @@
-"""
-generate_data.py
-
-Generates 3 synthetic CSVs simulating a real finance-ops reconciliation batch:
-  - razorpay_settlements.csv
-  - bank_statement.csv
-  - internal_ledger.csv
-
-The noise model (case counts and logic) is documented in docs/noise_model.md.
-Uses a fixed random seed so results are reproducible.
-"""
-
 import random
 import string
 import csv
@@ -25,9 +13,6 @@ Faker.seed(SEED)
 OUT_DIR = Path(__file__).resolve().parent.parent / "data"
 OUT_DIR.mkdir(exist_ok=True)
 
-# Tracks the TRUE case type behind each payment_id, for validation only.
-# This is never fed to the matcher - it's the answer key used afterward
-# to check the matcher's real per-category accuracy (see validate.py).
 GROUND_TRUTH = []
 
 BASE_DATE = date(2026, 8, 1)
@@ -246,13 +231,11 @@ def build_records():
             "value_date": sdate.isoformat(),
             "narration": f"NEFT CR {utr}"
         })
-        # no ledger row created at all
+        
         GROUND_TRUTH.append({"payment_id": pid, "true_case_type": "no_ledger_entry"})
         idx += 1
 
-    # Build the batch per the documented composition (docs/noise_model.md)
-    # Scaled ~4.3x from the original 70-case pilot batch, same proportions,
-    # to strengthen statistical significance of match-rate / precision metrics.
+    
     for _ in range(160):
         new_clean_case()
     for _ in range(34):

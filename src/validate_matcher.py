@@ -1,19 +1,3 @@
-"""
-validate_matcher.py
-
-Compares the matcher's actual output (matches.csv, exceptions.json) against
-the ground truth answer key (ground_truth.csv, generated alongside the data
-but never fed to the matcher itself).
-
-Produces:
-  - per-category accuracy (did each true case type land where it should?)
-  - a confusion matrix (true_case_type vs matcher's actual outcome)
-  - flags any misclassified records by payment_id for manual inspection
-
-This is the honest per-category accuracy check - an aggregate match rate can
-hide poor performance on a specific case type. Run this after matcher.py.
-"""
-
 import csv
 import json
 from pathlib import Path
@@ -21,9 +5,7 @@ from collections import defaultdict
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
-# Maps each true case type to the outcome (reason code) the matcher SHOULD
-# produce if it's working correctly. Some true types can validly resolve to
-# either a match reason or an exception reason (see note below).
+
 EXPECTED_OUTCOME = {
     "clean_match": {"exact_match"},
     "partial_settlement": {"partial_settlement"},
@@ -31,9 +13,6 @@ EXPECTED_OUTCOME = {
     "date_lag": {"date_lag"},
     "ambiguous_duplicate_utr": {"ambiguous_duplicate_utr"},
     "no_bank_entry": {"no_bank_entry"},
-    # no_ledger_entry is expected to ALSO succeed at the bank-match level
-    # (exact_match, fee_deduction, or date_lag) while being flagged as an
-    # exception separately - so we check it in two passes below.
     "no_ledger_entry": {"exact_match", "fee_deduction", "date_lag", "partial_settlement"},
 }
 
@@ -51,9 +30,6 @@ def load_matches():
 def load_exceptions():
     with open(DATA_DIR / "exceptions.json") as f:
         exceptions = json.load(f)
-    # a payment_id can appear in exceptions more than once conceptually,
-    # but in this pipeline each pid gets at most one exception entry except
-    # no_ledger_entry which also has a matches.csv row - track as a set of reasons
     result = defaultdict(list)
     for e in exceptions:
         result[e["payment_id"]].append(e["reason"])
@@ -84,8 +60,7 @@ def validate():
 
         expected = EXPECTED_OUTCOME[true_type]
 
-        # special case: no_ledger_entry must have BOTH a bank-level match
-        # reason AND the no_ledger_entry exception reason present
+        
         if true_type == "no_ledger_entry":
             has_bank_match = bool(actual_outcomes & expected)
             has_ledger_flag = "no_ledger_entry" in actual_outcomes
@@ -146,7 +121,7 @@ def main():
     confusion, correct_by_type, total_by_type, misclassified = validate()
     print_report(confusion, correct_by_type, total_by_type, misclassified)
 
-    # also write a machine-readable report
+    
     report = {
         "per_category_accuracy": {
             t: {"correct": correct_by_type[t], "total": total_by_type[t]}

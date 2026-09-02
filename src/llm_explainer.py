@@ -1,31 +1,3 @@
-"""
-llm_explainer.py
-
-LLM reasoning layer for the reconciliation pipeline.
-
-Scope (deliberately narrow):
-  - Runs ONLY on matched cases that involved ambiguity: fee_deduction,
-    date_lag, partial_settlement. Clean exact_match cases don't need
-    explaining, and exceptions are already final per the rule engine.
-  - The LLM NEVER makes or changes a match decision. It only generates a
-    human-readable explanation, which is then programmatically validated
-    against the actual numbers before being accepted.
-  - If validation fails, the case is escalated to llm_review_needed.json
-    instead of trusting the LLM's explanation blindly.
-
-Usage:
-  Dry run (no API key needed, uses a mock explainer to test the pipeline):
-    python src/llm_explainer.py --dry-run
-
-  Real run (requires GEMINI_API_KEY in .env):
-    python src/llm_explainer.py
-
-Outputs:
-  - llm_audit_log.json     : every call's input, raw output, validation result
-  - llm_review_needed.json : explanations that failed validation
-  - llm_metrics.json       : explanation accuracy summary
-"""
-
 import os
 import csv
 import json
@@ -39,8 +11,6 @@ load_dotenv()
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
-# Reason codes eligible for LLM explanation - clean matches don't need it,
-# exceptions are already final.
 EXPLAIN_REASONS = {"fee_deduction", "date_lag", "partial_settlement"}
 
 VALIDATION_TOLERANCE = 0.5  # rupees
@@ -78,7 +48,7 @@ Respond with ONLY a JSON object, no other text, in this exact schema:
 
 
 def call_gemini(prompt, api_key, model="gemini-3.5-flash-lite"):
-    """Real Gemini API call using the current google-genai SDK."""
+
     from google import genai
     from google.genai import types
 
@@ -94,10 +64,7 @@ def call_gemini(prompt, api_key, model="gemini-3.5-flash-lite"):
 
 
 def call_gemini_with_retry(prompt, api_key, max_retries=3, base_delay=15):
-    """
-    Wraps call_gemini with retry-with-backoff for transient rate-limit (429)
-    errors, so one throttled call doesn't kill the whole batch run.
-    """
+    
     last_error = None
     for attempt in range(max_retries):
         try:
@@ -114,17 +81,11 @@ def call_gemini_with_retry(prompt, api_key, max_retries=3, base_delay=15):
 
 
 def call_mock(match_row):
-    """
-    Mock explainer for --dry-run mode. Deterministically generates a plausible
-    explanation from the actual numbers, so we can test the validation logic
-    end-to-end without hitting a real API. Occasionally injects a wrong
-    explanation to prove the validation layer actually catches bad output.
-    """
+    
     reason = match_row["reason"]
     pid = match_row["payment_id"]
 
-    # inject a deliberately wrong explanation for ~1 in 15 cases to prove
-    # the validator isn't a no-op
+
     inject_error = (int(pid.split("_")[-1]) % 15 == 0)
 
     if reason == "fee_deduction":
@@ -153,18 +114,13 @@ def call_mock(match_row):
 
 
 def validate_explanation(match_row, llm_output):
-    """
-    Programmatic sanity check: does the LLM's flagged_reason_code match what
-    the rule engine actually assigned? This is the core "don't trust the LLM
-    blindly" mechanism - a mismatch means the explanation is rejected,
-    regardless of how confident or well-written it sounds.
-    """
+   
     true_reason = match_row["reason"]
     flagged = llm_output.get("flagged_reason_code")
 
     reason_code_matches = (flagged == true_reason)
 
-    # secondary numeric sanity check depending on case type
+    
     numeric_check_passed = True
     detail = ""
     if true_reason == "fee_deduction":

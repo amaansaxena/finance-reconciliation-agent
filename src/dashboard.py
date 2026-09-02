@@ -1,16 +1,3 @@
-"""
-dashboard.py
-
-Streamlit dashboard for the AI Finance Controller reconciliation agent.
-Run with: streamlit run src/dashboard.py
-
-Tabs:
-  - Overview      : headline metrics + charts
-  - Matches       : filterable table of resolved cases
-  - Exceptions    : the honest exception list, grouped by reason
-  - LLM Explanations : sample explanations + validation status
-"""
-
 import sys
 from pathlib import Path
 from collections import Counter
@@ -51,7 +38,7 @@ tab_overview, tab_matches, tab_exceptions, tab_llm = st.tabs(
     ["Overview", "Matches", "Exceptions", "LLM Explanations"]
 )
 
-# ============================== OVERVIEW TAB ==============================
+# OVERVIEW TAB 
 with tab_overview:
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total Settlements", metrics.get("total_settlements", 0))
@@ -111,7 +98,7 @@ with tab_overview:
         if rows:
             st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
-# ============================== MATCHES TAB ==============================
+#  MATCHES TAB
 with tab_matches:
     st.subheader("Resolved Matches")
     matches = data["matches"]
@@ -127,7 +114,7 @@ with tab_matches:
     else:
         st.info("No matches found. Run the pipeline first.")
 
-# ============================== EXCEPTIONS TAB ==============================
+#  EXCEPTIONS TAB 
 with tab_exceptions:
     st.subheader("Honest Exception List")
     st.caption(
@@ -152,7 +139,7 @@ with tab_exceptions:
     else:
         st.info("No exceptions found. Run the pipeline first.")
 
-# ============================== LLM EXPLANATIONS TAB ==============================
+# LLM EXPLANATIONS TAB 
 with tab_llm:
     st.subheader("LLM Explanation Layer")
     st.caption(

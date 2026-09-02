@@ -1,8 +1,8 @@
 # Synthetic Data & Noise Model
 
 ## Why synthetic data with injected noise
-Real reconciliation is never clean 1:1 matching. To make this project defensible
-(not a cherry-picked demo), the synthetic batch deliberately includes realistic
+Real reconciliation is never clean 1:1 matching,so to make this project accurate
+the synthetic batch deliberately includes realistic
 failure modes seen in real finance-ops: partial settlements, fee-adjusted amounts,
 date lags, duplicate references, and genuine unmatched records.
 
@@ -12,9 +12,6 @@ date lags, duplicate references, and genuine unmatched records.
 3. `internal_ledger.csv` — invoice_id, expected_amount, payment_id, status
 
 ## Batch composition (~314 total settlement records)
-Scaled ~4.3x from an initial 70-record pilot batch (same proportions), to
-strengthen the statistical significance of match-rate and precision/recall
-metrics while keeping every failure mode's design intent unchanged.
 
 | Case type                          | Count | Description |
 |-------------------------------------|-------|--------------|
@@ -27,7 +24,7 @@ metrics while keeping every failure mode's design intent unchanged.
 | Missing ledger entry (exception)    | 13    | Settlement and bank credit exist, but no internal ledger record |
 
 This composition is fixed with a random seed so results are reproducible, and the
-counts are documented here (not tuned after the fact) so match-rate results can't
+counts are documented here so matchrate results can't
 be accused of being cherry-picked.
 
 ## What "resolved" vs "exception" means downstream
