@@ -11,7 +11,6 @@ Tabs:
   - LLM Explanations : sample explanations + validation status
 """
 
-import subprocess
 import sys
 from pathlib import Path
 from collections import Counter
@@ -35,42 +34,6 @@ st.caption(
     "bank statements, and internal ledgers - with confidence-scored matching "
     "and an honest, auditable exception list."
 )
-
-
-def run_pipeline():
-    """Re-runs generate_data.py -> matcher.py -> validate_matcher.py live."""
-    steps = ["generate_data.py", "matcher.py", "validate_matcher.py"]
-    logs = []
-    for step in steps:
-        result = subprocess.run(
-            [sys.executable, str(SRC_DIR / step)],
-            capture_output=True, text=True
-        )
-        logs.append(f"--- {step} ---\n{result.stdout}\n{result.stderr}")
-    return "\n\n".join(logs)
-
-
-with st.sidebar:
-    st.header("Pipeline Control")
-    st.write(
-        "Regenerates a fresh synthetic batch and re-runs the full "
-        "matching + validation pipeline live."
-    )
-    if st.button("Run pipeline now", type="primary"):
-        with st.spinner("Running data generation, matching, and validation..."):
-            output = run_pipeline()
-        st.success("Pipeline run complete.")
-        with st.expander("View run log"):
-            st.code(output)
-        st.rerun()
-
-    st.divider()
-    st.caption(
-        "Note: the LLM explanation layer (Gemini API) is not re-run "
-        "automatically here since it requires an API key and takes several "
-        "minutes. Run `python src/llm_explainer.py` separately to refresh it."
-    )
-
 
 data = get_all_data()
 metrics = data["metrics"]
@@ -220,17 +183,62 @@ with tab_llm:
         else:
             display_log = audit_log
 
-        for entry in display_log[:25]:
+        PAGE_SIZE = 25
+        total_entries = len(display_log)
+        total_pages = max(1, (total_entries - 1) // PAGE_SIZE + 1)
+
+        if total_pages > 1:
+            page = st.number_input(
+                f"Page (1-{total_pages})", min_value=1, max_value=total_pages,
+                value=1, step=1
+            )
+        else:
+            page = 1
+
+        start = (page - 1) * PAGE_SIZE
+        end = start + PAGE_SIZE
+        page_entries = display_log[start:end]
+
+        st.caption(
+            f"Showing entries {start + 1}-{min(end, total_entries)} of {total_entries}"
+        )
+
+        for entry in page_entries:
             status = entry.get("status", "unknown")
             icon = "\u2705" if status == "accepted" else "\u26A0\uFE0F"
             with st.expander(
                 f"{icon} {entry.get('payment_id')} - {entry.get('true_reason')} ({status})"
             ):
                 st.write("**Explanation:**", entry.get("llm_output", {}).get("explanation", "N/A"))
-                st.write("**Validation:**", entry.get("validation", {}))
+                if status == "accepted":
+                    st.write("**Validation:**", entry.get("validation", {}))
+                else:
+                    validation = entry.get("validation", {})
+                    st.error("**Why this was rejected:**")
+                    if not validation.get("reason_code_matches", True):
+                        st.write(
+                            f"- The LLM's own classification did not match the rule "
+                            f"engine's decision (`{entry.get('true_reason')}`)."
+                        )
+                    if not validation.get("numeric_check_passed", True):
+                        st.write(
+                            f"- The underlying numbers did not pass the programmatic "
+                            f"sanity check: {validation.get('detail', 'no detail available')}"
+                        )
+                    st.caption(
+                        "This case was escalated to llm_review_needed.json instead of "
+                        "being trusted, since it failed one or more validation checks."
+                    )
 
-        if len(display_log) > 25:
-            st.caption(f"Showing first 25 of {len(display_log)} entries.")
+        if review_needed:
+            st.divider()
+            st.subheader(f"Escalated for Human Review ({len(review_needed)})")
+            st.caption(
+                "Cases where the LLM's explanation failed validation, or the API "
+                "call itself failed. These are never silently accepted."
+            )
+            df_review = pd.DataFrame(review_needed)
+            st.dataframe(df_review, use_container_width=True, hide_index=True)
     else:
         st.info(
             "No LLM explanations found yet. Run `python src/llm_explainer.py` "

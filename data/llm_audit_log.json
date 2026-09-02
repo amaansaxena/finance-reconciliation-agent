@@ -3,9 +3,9 @@
     "payment_id": "pay_00161",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 14371.83 matches the total bank amount across multiple rows rather than the expected net, indicating the transaction was settled across more than one payment entry.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 14371.83 matches the bank amount total, indicating that multiple bank rows were aggregated to fulfill the expected transaction value.",
       "flagged_reason_code": "partial_settlement",
-      "confidence_in_explanation": 90
+      "confidence_in_explanation": 75
     },
     "validation": {
       "reason_code_matches": true,
@@ -18,7 +18,7 @@
     "payment_id": "pay_00162",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification is appropriate because the settlement amount of 73635.55 matches the total bank amount of 73635.55 derived from multiple bank rows, indicating a collective settlement transaction.",
+      "explanation": "The classification of partial_settlement makes sense because the settlement amount of 73635.55 matches the bank amount total of 73635.55 across two bank rows, indicating that the total expected ledger amount was split or only partially settled in the primary expected bucket.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -33,7 +33,7 @@
     "payment_id": "pay_00163",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is made because the settlement amount of 5128.26 matches the bank amount total of 5128.26 across multiple bank rows, indicating a portion or specific batch of the expected total ledger amount was settled.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 5128.26 matches the bank amount total of 5128.26 across multiple bank rows, indicating a fragmented settlement process.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -48,7 +48,7 @@
     "payment_id": "pay_00164",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 71823.36 matches the total bank amount across multiple rows, indicating that the transaction was processed across two bank entries.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 71823.36 matches the total bank amount across multiple rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -63,7 +63,7 @@
     "payment_id": "pay_00165",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification as a partial settlement is supported by the settlement amount of 65548.56 being less than the total bank amount of 65548.56, indicating that the transaction represents an incomplete or installment portion of the expected funds.",
+      "explanation": "The classification as partial_settlement makes sense because the settlement amount of 65548.56 accounts for the bank amount total of 65548.56 spread across 2 bank rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -78,7 +78,7 @@
     "payment_id": "pay_00166",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 33417.12 accounts for the total bank amount of 33417.12 split across 2 bank rows.",
+      "explanation": "The classification makes sense because the settlement amount of 33417.12 accounts for the total bank amount across multiple rows, indicating a partial settlement of the expected funds.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -93,7 +93,7 @@
     "payment_id": "pay_00167",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 54384.37 matches the total bank amount of 54384.37 derived from multiple bank rows.",
+      "explanation": "The classification of partial_settlement makes sense because the settlement amount of 54384.37 matches the total bank amount across two rows, indicating a split payment or multi-row settlement for the transaction.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -108,7 +108,7 @@
     "payment_id": "pay_00168",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification is correct because the bank amount total of 21888.26 matches the settlement amount, indicating a partial settlement of the expected transaction.",
+      "explanation": "The classification makes sense because the settlement amount of 21888.26 matches the bank amount total of 21888.26 spanning across 2 bank rows, indicating a partial or multi-part settlement.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 95
     },
@@ -123,7 +123,7 @@
     "payment_id": "pay_00169",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 49803.54 matches the total bank amount of 49803.54 split across multiple bank rows, indicating a partial settlement of the expected funds.",
+      "explanation": "The classification makes sense because the settlement amount of 49803.54 matches the total bank amount of 49803.54 derived from multiple bank rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -138,7 +138,7 @@
     "payment_id": "pay_00170",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification as a partial settlement is supported by the fact that the total bank amount of 54072.50 spans across 2 bank rows while matching the settlement amount.",
+      "explanation": "The classification as partial_settlement is supported because the settlement amount and bank amount total of 54072.50 across two bank rows account for a portion of the expected ledger balance.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -153,7 +153,7 @@
     "payment_id": "pay_00171",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification as a partial settlement is supported by the fact that the total bank amount of 66339.87 spans across 2 bank rows while matching the settlement amount.",
+      "explanation": "The classification as partial_settlement is justified because the total bank amount of 66339.87 matches the settlement amount, but spans across multiple bank rows indicating a segmented or partial payout process.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -168,7 +168,7 @@
     "payment_id": "pay_00172",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 58316.74 is less than the total bank amount of 58316.74, indicating a partial amount was settled.",
+      "explanation": "The classification as partial_settlement is supported because the settlement amount of 58316.74 is distributed across 2 bank rows totaling 58316.74.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -183,7 +183,7 @@
     "payment_id": "pay_00173",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification as partial_settlement makes sense because the settlement amount of 16967.68 matches the total bank amount across multiple rows, indicating the expected ledger amount was split or only partially covered in this batch.",
+      "explanation": "The classification as partial_settlement makes sense because the settlement amount of 16967.68 matches the total bank amount across multiple rows, indicating that the expected net was divided into partial payouts.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -198,9 +198,9 @@
     "payment_id": "pay_00174",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 39572.5 matches the total bank amount of 39572.5 derived from multiple bank rows, indicating that the total expected ledger amount was split across multiple transactions.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 39572.5 is spread across 2 bank rows totaling 39572.5, indicating multiple disbursements.",
       "flagged_reason_code": "partial_settlement",
-      "confidence_in_explanation": 90
+      "confidence_in_explanation": 75
     },
     "validation": {
       "reason_code_matches": true,
@@ -213,7 +213,7 @@
     "payment_id": "pay_00175",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 72600.07 matches the bank amount total exactly, indicating the full expected funds were processed across multiple bank rows.",
+      "explanation": "The classification makes sense because the settlement amount of 72600.07 matches the total bank amount across two rows, indicating a partial settlement of the expected funds.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -228,7 +228,7 @@
     "payment_id": "pay_00176",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 45570.22 matches the bank amount total exactly across two rows, indicating a partial settlement of expected funds.",
+      "explanation": "The classification makes sense because the settlement amount of 45570.22 matches the total bank amount across multiple rows, confirming a settled transaction state.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -243,7 +243,7 @@
     "payment_id": "pay_00177",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 72174.78 spans multiple bank rows totaling 72174.78, indicating a split payment or incomplete ledger matching relative to expectations.",
+      "explanation": "The classification makes sense because the settlement amount of 72174.78 matches the bank amount total of 72174.78 across multiple bank rows, representing a subset of the expected ledger balance.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -258,7 +258,7 @@
     "payment_id": "pay_00178",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 23477.46 equals the total bank amount of 23477.46 across two bank rows, confirming the ledger transaction is accounted for.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 23477.46 equals the total bank amount across multiple rows, indicating that the expected net was divided into partial payouts.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -273,7 +273,7 @@
     "payment_id": "pay_00179",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 11371.24 accounts for only a portion of the total bank amount across multiple rows.",
+      "explanation": "The classification is valid because the settlement amount of 11371.24 accounts for only a portion of the total bank amount of 11371.24 across multiple rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -288,7 +288,7 @@
     "payment_id": "pay_00180",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification as a partial settlement is supported by the total bank amount of 57370.37 aligning with the settlement amount, but involving multiple bank rows which suggests splitting or partial clearing.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 57370.37 matches the total bank amount across multiple rows, indicating the expected net requires further breakdown.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -303,7 +303,7 @@
     "payment_id": "pay_00181",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification as partial settlement is justified because the settlement amount of 4875.54 matches the total bank amount of 4875.54 across multiple bank rows, indicating that the transaction has been fully accounted for in the settlement phase.",
+      "explanation": "The classification as partial_settlement makes sense because the settlement amount of 4875.54 matches the bank amount total of 4875.54 derived across multiple bank rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -318,7 +318,7 @@
     "payment_id": "pay_00182",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 5003.53 matches the total bank amount across multiple rows rather than the single expected net.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 5003.53 matches the total bank amount across multiple rows, yet represents only a portion of the expected ledger obligations.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -333,9 +333,9 @@
     "payment_id": "pay_00183",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification is valid because the settlement amount of 61080.21 matches the total bank amount across multiple rows, indicating a split or multi-row partial settlement.",
+      "explanation": "The classification makes sense because the settlement amount of 61080.21 matches the bank amount total of 61080.21, but requires reconciliation across multiple bank rows.",
       "flagged_reason_code": "partial_settlement",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 75
     },
     "validation": {
       "reason_code_matches": true,
@@ -348,9 +348,9 @@
     "payment_id": "pay_00184",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 71967.69 matches the bank amount total exactly, confirming the transaction represents a partial settlement.",
+      "explanation": "The classification makes sense because the settlement amount of 71967.69 matches the bank amount total of 71967.69 from multiple bank rows, indicating an incomplete or fragmented ledger reconciliation.",
       "flagged_reason_code": "partial_settlement",
-      "confidence_in_explanation": 100
+      "confidence_in_explanation": 75
     },
     "validation": {
       "reason_code_matches": true,
@@ -378,7 +378,7 @@
     "payment_id": "pay_00186",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 52075.43 matches the bank total across 2 rows, indicating a partial settlement of the ledger total.",
+      "explanation": "The classification makes sense because the settlement amount of 52075.43 matches the total bank amount of 52075.43 spanning multiple bank rows, indicating a partial settlement structure.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -393,7 +393,7 @@
     "payment_id": "pay_00187",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 56542.96 represents a portion of the total bank amount split across 2 rows.",
+      "explanation": "The classification of partial_settlement makes sense because the settlement amount of 56542.96 accounts for only a portion of the total bank amount across multiple rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -408,9 +408,9 @@
     "payment_id": "pay_00188",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification is valid because the settlement amount of 51853.64 accounts for the total bank amount of 51853.64 across multiple bank rows, indicating a split or partial settlement execution.",
+      "explanation": "The classification is valid because the settlement amount of 51853.64 accounts for the total bank amount of 51853.64 across multiple bank rows, indicating a settled transaction value.",
       "flagged_reason_code": "partial_settlement",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 75
     },
     "validation": {
       "reason_code_matches": true,
@@ -423,7 +423,7 @@
     "payment_id": "pay_00189",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 20862.86 matches the total bank amount of 20862.86 derived from multiple bank rows.",
+      "explanation": "The classification makes sense because the settlement amount of 20862.86 matches the total bank amount of 20862.86 across multiple bank rows, indicating a partial settlement split.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -438,7 +438,7 @@
     "payment_id": "pay_00190",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement makes sense because the settlement amount of 11989.46 matches the bank amount total from multiple bank rows, indicating that the full ledger expected amount was settled across multiple transactions.",
+      "explanation": "The classification of partial_settlement makes sense because the settlement amount of 11989.46 represents only a portion distributed across multiple bank rows from the total bank amount of 11989.46.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -453,9 +453,9 @@
     "payment_id": "pay_00191",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 41995.38 matches the total bank amount across two rows, yet represents only a portion of the expected multi-row ledger settlement.",
+      "explanation": "The classification of partial_settlement is supported because the settlement amount of 41995.38 matches the total bank amount of 41995.38 across multiple bank rows.",
       "flagged_reason_code": "partial_settlement",
-      "confidence_in_explanation": 90
+      "confidence_in_explanation": 75
     },
     "validation": {
       "reason_code_matches": true,
@@ -468,7 +468,7 @@
     "payment_id": "pay_00192",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 67937.96 represents only a portion of the total bank amount expected across multiple rows.",
+      "explanation": "The classification makes sense because the settlement amount of 67937.96 represents only a portion of the total bank amount split across two rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -483,7 +483,7 @@
     "payment_id": "pay_00193",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification of partial_settlement is supported because the settlement amount of 19251.63 matches the total bank amount of 19251.63 across multiple bank rows, indicating a fragmented payout for the expected ledger amount.",
+      "explanation": "The classification of partial_settlement makes sense because the settlement amount of 19251.63 matches the total bank amount across multiple rows, confirming the transaction is being settled in parts or portions.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 90
     },
@@ -498,7 +498,7 @@
     "payment_id": "pay_00194",
     "true_reason": "partial_settlement",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 32580.91 represents a portion of the total bank amount of 32580.91 distributed across multiple bank rows.",
+      "explanation": "The classification makes sense because the settlement amount of 32580.91 represents a portion of the total bank amount of 32580.91 spread across 2 bank rows.",
       "flagged_reason_code": "partial_settlement",
       "confidence_in_explanation": 75
     },
@@ -513,7 +513,7 @@
     "payment_id": "pay_00195",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 42378.7 is less than the settlement amount of 43403.01, perfectly matching the expected net amount after a fee deduction.",
+      "explanation": "The bank amount of 42378.7 matches the expected net amount, while being less than the settlement amount of 43403.01, reflecting a fee deduction.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -528,7 +528,7 @@
     "payment_id": "pay_00196",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 53387.01 is less than the settlement amount of 54677.4, with the difference corresponding to a standard platform fee deduction.",
+      "explanation": "The classification makes sense because the bank amount of 53387.01 is less than the settlement amount of 54677.4, indicating that a fee deduction was applied to the expected amount.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -543,7 +543,7 @@
     "payment_id": "pay_00197",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 11700.86 matches the expected net after deducting fees from the settlement amount of 11983.67.",
+      "explanation": "The classification makes sense because the bank amount of 11,700.86 matches the expected net amount, while being lower than the settlement amount of 11,983.67 due to standard fee deductions.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -558,7 +558,7 @@
     "payment_id": "pay_00198",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 26641.02 matches the expected net amount precisely, representing a lower value than the settlement amount of 27284.95 due to fee deductions.",
+      "explanation": "The classification makes sense because the bank amount of 26641.02 matches the expected net amount after deducting processing fees from the settlement amount of 27284.95.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -573,9 +573,9 @@
     "payment_id": "pay_00199",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 29557.11 matches the expected net amount, while the settlement amount is higher at 30271.52, confirming a fee deduction occurred between the settlement and the final bank deposit.",
+      "explanation": "The bank amount of 29557.11 matches the expected net amount, while the settlement amount is higher at 30271.52, confirming a fee deduction.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 85
     },
     "validation": {
       "reason_code_matches": true,
@@ -588,7 +588,7 @@
     "payment_id": "pay_00200",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification is valid because the bank amount of 34172.26 matches the expected net amount, while being lower than the settlement amount of 34998.21 due to the deduction of fees.",
+      "explanation": "The classification is correct because the expected net amount of 34,172.26 is less than the settlement amount of 34,998.21, reflecting a deduction for fees.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -618,9 +618,9 @@
     "payment_id": "pay_00202",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification is valid because the bank amount of 25444.31 matches the expected net amount exactly, which is derived from the settlement amount of 26059.31 after deducting the applicable fees.",
+      "explanation": "The classification is correct because the bank amount of 25444.31 matches the expected net amount, which is derived from the settlement amount of 26059.31 after deducting the applicable fees.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 85
     },
     "validation": {
       "reason_code_matches": true,
@@ -633,7 +633,7 @@
     "payment_id": "pay_00203",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 13905.56 matches the expected net amount, which is less than the settlement amount of 14241.66 due to a fee deduction.",
+      "explanation": "The classification is valid because the settlement amount of 14241.66 exceeds the bank amount of 13905.56, resulting in a net difference that accounts for the fee deduction.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -663,7 +663,7 @@
     "payment_id": "pay_00205",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification is valid because the settlement amount of 46042.48 exceeds the bank amount of 44955.88, reflecting a standard fee deduction from the gross payout.",
+      "explanation": "The classification is valid because the settlement amount of 46042.48 is higher than the bank and expected net amount of 44955.88, reflecting a standard fee deduction of 1086.60.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -678,7 +678,7 @@
     "payment_id": "pay_00206",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification as fee_deduction is justified because the settlement amount of 18273.67 exceeds the bank and expected net amount of 17842.42, representing the gross transaction value before the fee deduction.",
+      "explanation": "The classification as fee_deduction is justified because the settlement amount of 18273.67 exceeds the bank amount of 17842.42, indicating that platform or processing fees were deducted prior to the final bank credit.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -693,7 +693,7 @@
     "payment_id": "pay_00207",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 73,222.70 matches the expected net after deducting fees from the settlement amount of 74,992.52.",
+      "explanation": "The classification makes sense because the bank amount of 73222.7 matches the expected net after deducting fees from the settlement amount of 74992.52.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -723,7 +723,7 @@
     "payment_id": "pay_00209",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 39594.81 is less than the settlement amount of 40551.84, exactly matching the expected net after fee deduction.",
+      "explanation": "The classification makes sense because the bank amount of 39594.81 is less than the settlement amount of 40551.84, exactly matching the expected net amount after deducting applicable fees.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -738,9 +738,9 @@
     "payment_id": "pay_00210",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 55,538.20 is less than the settlement amount of 56,880.58, perfectly matching the expected net amount after fee deductions.",
+      "explanation": "The classification makes sense because the bank amount of 55538.2 matches the expected net, while being lower than the settlement amount of 56880.58 due to platform fees being deducted.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 85
     },
     "validation": {
       "reason_code_matches": true,
@@ -768,9 +768,9 @@
     "payment_id": "pay_00212",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The settlement amount of 58971.27 is higher than the bank amount and expected net of 57579.54, which represents a fee deduction of 1391.73 applied by the processor.",
+      "explanation": "The classification makes sense because the bank amount of 57,579.54 matches the expected net amount, while being lower than the settlement amount of 58,971.27 due to standard fee deductions.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 85
     },
     "validation": {
       "reason_code_matches": true,
@@ -783,7 +783,7 @@
     "payment_id": "pay_00213",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification as fee_deduction is justified because the expected net ledger amount of 65967.12 matches the bank amount, which is less than the settlement amount of 67561.57 due to deducted transaction fees.",
+      "explanation": "The classification makes sense because the bank amount of 65967.12 matches the expected net amount exactly, while being lower than the settlement amount of 67561.57 due to deducted fees.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -828,9 +828,9 @@
     "payment_id": "pay_00216",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 58367.25 matches the expected net, which is less than the settlement amount of 59778.01 due to a deducted fee.",
+      "explanation": "The classification makes sense because the bank amount of 58367.25 matches the expected net amount, which is less than the settlement amount of 59778.01 due to platform or processing fee deductions.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 85
+      "confidence_in_explanation": 90
     },
     "validation": {
       "reason_code_matches": true,
@@ -843,9 +843,9 @@
     "payment_id": "pay_00217",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 50138.26 matches the expected net amount, while being lower than the settlement amount of 51350.12 due to a fee deduction.",
+      "explanation": "The classification makes sense because the bank amount of 50138.26 matches the expected net amount, while the higher settlement amount of 51350.12 indicates that platform fees were deducted prior to bank deposit.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 85
     },
     "validation": {
       "reason_code_matches": true,
@@ -858,7 +858,7 @@
     "payment_id": "pay_00218",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification is valid because the bank amount of 66640.12 matches the expected net amount after deducting fees from the settlement amount of 68250.84.",
+      "explanation": "The classification is valid because the bank amount of 66640.12 matches the expected net amount, representing a deduction from the higher settlement amount of 68250.84.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -873,7 +873,7 @@
     "payment_id": "pay_00219",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 53297.9 is less than the settlement amount of 54586.13, reflecting a fee deduction matching the expected net amount.",
+      "explanation": "The bank amount of 53297.9 is less than the settlement amount of 54586.13, reflecting a deduction of 1288.23 for fees.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -888,7 +888,7 @@
     "payment_id": "pay_00220",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 59926.18 matches the expected net amount, which is less than the settlement amount of 61374.62 due to deducted fees.",
+      "explanation": "The classification makes sense because the bank amount of 59926.18 matches the expected net after deducting fees from the settlement amount of 61374.62.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -903,7 +903,7 @@
     "payment_id": "pay_00221",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification as a fee deduction is justified because the bank amount of 64100.71 is less than the settlement amount of 65650.05, perfectly matching the expected net amount after processing fees.",
+      "explanation": "The classification as a fee deduction is justified because the bank amount of 64100.71 matches the expected net amount, while being lower than the settlement amount of 65650.05, representing the deduction of processing fees.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -918,7 +918,7 @@
     "payment_id": "pay_00222",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 50430.26 matches the expected net amount after deducting fees from the settlement amount of 51649.18.",
+      "explanation": "The classification makes sense because the bank amount of 50430.26 matches the expected net amount, while the higher settlement amount of 51649.18 indicates a deduction was made.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -933,7 +933,7 @@
     "payment_id": "pay_00223",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank amount of 40743.27 matches the expected net amount after deducting platform fees from the settlement amount of 41728.05.",
+      "explanation": "The settlement amount of 41728.05 exceeds the expected net amount of 40743.27, matching the fee deduction classification where the lower received bank amount reflects deducted charges.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -948,9 +948,9 @@
     "payment_id": "pay_00224",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 47491.76 matches the expected net amount, which is less than the settlement amount of 48639.65 due to a fee deduction.",
+      "explanation": "The bank amount of 47,491.76 matches the expected net amount exactly, which is lower than the settlement amount of 48,639.65 due to platform fee deductions.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 85
+      "confidence_in_explanation": 95
     },
     "validation": {
       "reason_code_matches": true,
@@ -963,7 +963,7 @@
     "payment_id": "pay_00225",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 10332.72 is reduced to the bank and expected net amount of 10088.87, representing a fee deduction.",
+      "explanation": "The classification makes sense because the bank amount of 10088.87 is less than the settlement amount of 10332.72, reflecting a fee deduction that matches the expected net amount.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -978,9 +978,9 @@
     "payment_id": "pay_00226",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 69,496.89 matches the expected net amount, while being lower than the settlement amount of 71,176.66 due to intermediary fee deductions.",
+      "explanation": "The bank amount of 69496.89 matches the expected net amount, while the settlement amount of 71176.66 is higher, indicating that a fee of 1679.77 was deducted before bank crediting.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 85
     },
     "validation": {
       "reason_code_matches": true,
@@ -993,9 +993,9 @@
     "payment_id": "pay_00227",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The bank amount of 37681.43 is less than the settlement amount of 38592.2 due to deducted platform fees, matching the expected net amount.",
+      "explanation": "The bank amount and expected net of 37681.43 are less than the settlement amount of 38592.2 due to a fee deduction of 910.77.",
       "flagged_reason_code": "fee_deduction",
-      "confidence_in_explanation": 85
+      "confidence_in_explanation": 95
     },
     "validation": {
       "reason_code_matches": true,
@@ -1008,7 +1008,7 @@
     "payment_id": "pay_00228",
     "true_reason": "fee_deduction",
     "llm_output": {
-      "explanation": "The classification is valid because the expected net amount of 17847.12 matches the bank amount, which is less than the settlement amount of 18278.49 due to a fee deduction.",
+      "explanation": "The classification makes sense because the bank amount of 17,847.12 matches the expected net amount, while being lower than the settlement amount of 18,278.49 due to a deduction of 431.37.",
       "flagged_reason_code": "fee_deduction",
       "confidence_in_explanation": 85
     },
@@ -1038,7 +1038,7 @@
     "payment_id": "pay_00230",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The transaction matches perfectly in settlement and bank amount at 53568.08, but is classified as a date lag due to a timing difference of 1 day between the ledger and bank records.",
+      "explanation": "The transaction matches completely in amount at 53568.08, but is classified as date_lag due to a 1-day timing difference between the ledger and bank record.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1053,7 +1053,7 @@
     "payment_id": "pay_00231",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 55688.11 matches the bank amount of 55688.11 perfectly, but the transaction was classified as date_lag due to a 1-day timing difference between the ledger and the bank record.",
+      "explanation": "The settlement amount of 55688.11 matches the bank amount of 55688.11 perfectly, but the transaction was classified as date_lag due to a 1-day timing difference between the ledger and bank records.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1068,7 +1068,7 @@
     "payment_id": "pay_00232",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 49349.9 perfectly matches the bank amount, with the transaction classified as a date_lag due to a 2-day timing difference.",
+      "explanation": "The transaction classification of date_lag is justified because the settlement amount of 49349.9 perfectly matches the bank amount of 49349.9 with a 2-day temporal lag.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1083,9 +1083,9 @@
     "payment_id": "pay_00233",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 3921.68 exactly matches the bank amount of 3921.68, but the transaction is classified as a date lag due to a 1-day timing difference between the ledger and bank records.",
+      "explanation": "The settlement amount of 3921.68 perfectly matches the bank amount of 3921.68 with a lag of 1 day between the ledger and bank records.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 80
+      "confidence_in_explanation": 100
     },
     "validation": {
       "reason_code_matches": true,
@@ -1098,9 +1098,9 @@
     "payment_id": "pay_00234",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification of date_lag is correct because the settlement amount of 18572.51 matches the bank amount of 18572.51 perfectly, with a temporal delay of 2 days.",
+      "explanation": "The classification of date_lag is justified because the settlement amount of 18572.51 perfectly matches the bank amount of 18572.51, with the only discrepancy being a temporal delay of 2 days between the expected and actual transaction dates.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 80
+      "confidence_in_explanation": 100
     },
     "validation": {
       "reason_code_matches": true,
@@ -1113,7 +1113,7 @@
     "payment_id": "pay_00235",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 52162.83 matches the bank amount of 52162.83 perfectly, but the transaction is classified as a date_lag due to a 2-day delay in processing.",
+      "explanation": "The classification of date_lag makes sense because the settlement amount of 52162.83 matches the bank amount of 52162.83 perfectly, with the transaction occurring over a lag of 2 days.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1128,7 +1128,7 @@
     "payment_id": "pay_00236",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 53518.11 matches the bank amount perfectly, but the transaction is classified as date_lag due to a 1-day timing difference between the ledger and bank records.",
+      "explanation": "The settlement amount of 53518.11 matches the bank amount of 53518.11 perfectly, but the transaction was classified as date_lag due to a 1-day timing difference between the ledger and bank record.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1143,7 +1143,7 @@
     "payment_id": "pay_00237",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification is correct because the settlement amount of 6074.87 matches the bank amount of 6074.87 perfectly, with the transaction occurring with a delay of 1 day.",
+      "explanation": "The classification of date_lag is supported by the exact match of the bank amount and settlement amount at 6074.87, with a transaction timing difference of 1 day.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1158,7 +1158,7 @@
     "payment_id": "pay_00238",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The transaction classification of date_lag is justified because the settlement amount of 6064.21 exactly matches the bank amount of 6064.21 with a time difference of 1 day.",
+      "explanation": "The classification of date_lag makes sense because the settlement amount of 6064.21 matches the bank amount of 6064.21 exactly, but the transaction was processed with a 1-day time lag.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1173,9 +1173,9 @@
     "payment_id": "pay_00239",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 20243.09 exactly matches the bank amount, with the transaction occurring exactly 1 day apart as indicated by the lag_days value.",
+      "explanation": "The settlement amount of 20243.09 matches the bank amount of 20243.09 perfectly, but the transaction is classified as date_lag due to a 1-day timing difference.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 80
     },
     "validation": {
       "reason_code_matches": true,
@@ -1188,7 +1188,7 @@
     "payment_id": "pay_00240",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 38752.75 matches the bank amount of 38752.75 perfectly, but the transaction is classified as date_lag due to a 2-day delay between the ledger and bank record.",
+      "explanation": "The settlement amount of 38752.75 exactly matches the bank amount of 38752.75, but the transaction was delayed by a lag of 2 days.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1203,9 +1203,9 @@
     "payment_id": "pay_00241",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount and bank amount exactly match at 1390.79 while exhibiting a 1-day transaction lag.",
+      "explanation": "The classification makes sense because the settlement amount and bank amount perfectly match at 1390.79, while the transaction is flagged due to a 1-day timing difference between the ledger and the bank record.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 80
+      "confidence_in_explanation": 100
     },
     "validation": {
       "reason_code_matches": true,
@@ -1218,7 +1218,7 @@
     "payment_id": "pay_00242",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification makes sense because the bank settlement amount of 67735.96 matches the expected value perfectly, but the transaction is flagged due to a 1-day time lag.",
+      "explanation": "The settlement amount of 67735.96 exactly matches the bank amount of 67735.96, but the transaction was classified as a date_lag due to a 1-day timing difference between the ledger and bank records.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1233,7 +1233,7 @@
     "payment_id": "pay_00243",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification of date_lag is justified because the settlement amount of 29013.34 matches the bank amount of 29013.34 perfectly, with the transaction occurring with a lag of 1 day.",
+      "explanation": "The settlement amount of 29013.34 matches the bank amount of 29013.34 perfectly, but the transaction was classified as date_lag due to a 1-day timing difference between the ledger and bank record.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1248,7 +1248,7 @@
     "payment_id": "pay_00244",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 36187.8 matches the bank amount of 36187.8 perfectly, with the transaction only delayed by a lag of 2 days.",
+      "explanation": "The transaction classification is justified because the settlement amount of 36187.8 matches the bank amount of 36187.8 perfectly, with the discrepancy solely attributed to a 2-day time lag.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1263,9 +1263,9 @@
     "payment_id": "pay_00245",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification of date_lag is supported because the settlement amount of 36236.49 exactly matches the bank amount of 36236.49, with a confirmed ledger and a timing difference of 2 days.",
+      "explanation": "The settlement amount of 36236.49 matches the bank amount of 36236.49 exactly, but the transaction was processed with a 2-day time lag.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 100
+      "confidence_in_explanation": 80
     },
     "validation": {
       "reason_code_matches": true,
@@ -1278,7 +1278,7 @@
     "payment_id": "pay_00246",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 35640.49 matches the bank amount of 35640.49 perfectly, but the transaction is classified as date_lag due to a 1-day timing difference between the ledger and bank records.",
+      "explanation": "The settlement amount of 35640.49 matches the bank amount of 35640.49 exactly, but the transaction was classified as a date_lag due to a 1-day time difference between the ledger and bank records.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1293,7 +1293,7 @@
     "payment_id": "pay_00247",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification is correct because the settlement amount of 59905.61 perfectly matches the bank amount of 59905.61 with a minor timing difference of 1 day.",
+      "explanation": "The settlement amount of 59905.61 matches the bank amount of 59905.61 perfectly, but the transaction was classified as date_lag due to a 1-day timing difference between the ledger confirmation and bank processing.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1308,7 +1308,7 @@
     "payment_id": "pay_00248",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 14523.41 perfectly matches the bank amount of 14523.41, but the transaction is classified as a date_lag due to a 2-day time difference between the expected and actual processing dates.",
+      "explanation": "The transaction matches perfectly in settlement and bank amount at 14523.41, but is classified as a date lag due to a 2-day delay between the expected and actual processing dates.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 95
     },
@@ -1323,9 +1323,9 @@
     "payment_id": "pay_00249",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification of date_lag is justified because the settlement amount of 25886.55 perfectly matches the bank amount of 25886.55, with the only discrepancy being a temporal delay of 2 days.",
+      "explanation": "The classification of date_lag is justified because the settlement amount of 25886.55 matches the bank amount of 25886.55 perfectly, but the transaction was processed with a delay of 2 days.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 100
+      "confidence_in_explanation": 80
     },
     "validation": {
       "reason_code_matches": true,
@@ -1338,7 +1338,7 @@
     "payment_id": "pay_00250",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 44158.24 matches the bank amount of 44158.24 exactly, but the transaction was classified as date_lag due to a 2-day time difference.",
+      "explanation": "The settlement amount of 44158.24 matches the bank amount perfectly, but the transaction is classified as date_lag due to a 2-day delay between the ledger and bank records.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1353,7 +1353,7 @@
     "payment_id": "pay_00251",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification makes sense because the settlement amount of 46221.32 perfectly matches the bank amount of 46221.32, with the reconciliation being flagged solely due to a 1-day time lag.",
+      "explanation": "The classification makes sense because the settlement amount and bank amount perfectly match at 46221.32, with the reconciliation discrepancy arising solely from a 1-day timing lag between the ledger and bank records.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 100
     },
@@ -1368,7 +1368,7 @@
     "payment_id": "pay_00252",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification of date_lag is justified because the settlement amount of 57926.86 perfectly matches the bank amount of 57926.86, with the only discrepancy being a temporal delay of 1 day.",
+      "explanation": "The classification of date_lag is justified because the settlement amount of 57926.86 perfectly matches the bank amount of 57926.86, with the only discrepancy being a temporal lag of 1 day.",
       "flagged_reason_code": "date_lag",
       "confidence_in_explanation": 80
     },
@@ -1383,9 +1383,9 @@
     "payment_id": "pay_00253",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The settlement amount of 24304.14 matches the bank amount of 24304.14 perfectly, with the classification driven by a 1-day transaction timing discrepancy.",
+      "explanation": "The classification makes sense because the bank settlement amount of 24304.14 matches the expected transaction amount perfectly, with the only discrepancy being a time lag of 1 day.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 100
     },
     "validation": {
       "reason_code_matches": true,
@@ -1398,9 +1398,9 @@
     "payment_id": "pay_00254",
     "true_reason": "date_lag",
     "llm_output": {
-      "explanation": "The classification of date_lag is justified because the settlement amount of 4086.99 perfectly matches the bank amount of 4086.99, with a temporal separation of 2 days between the expected and actual transaction dates.",
+      "explanation": "The transaction classification is date_lag because the settlement amount of 4086.99 matches the bank amount of 4086.99 exactly, but the settlement occurred with a lag of 2 days.",
       "flagged_reason_code": "date_lag",
-      "confidence_in_explanation": 95
+      "confidence_in_explanation": 80
     },
     "validation": {
       "reason_code_matches": true,

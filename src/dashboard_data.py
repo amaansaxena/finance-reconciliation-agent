@@ -1,14 +1,3 @@
-"""
-dashboard_data.py
-
-Consolidated data-loading layer for the Streamlit dashboard. Reads every
-output file produced by the pipeline (matcher, validator, LLM explainer)
-so dashboard.py doesn't repeat file-loading logic across sections.
-
-All loaders return empty/default structures if a file doesn't exist yet,
-so the dashboard doesn't crash if you haven't run every stage.
-"""
-
 import csv
 import json
 from pathlib import Path
