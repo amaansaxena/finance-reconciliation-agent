@@ -11,15 +11,14 @@ SRC_DIR = Path(__file__).resolve().parent
 
 st.set_page_config(
     page_title="AI Finance Controller",
-    page_icon="\U0001F4CA",
     layout="wide"
 )
 
 st.title("AI Finance Controller")
 st.caption(
     "Autonomous 3-way reconciliation agent matching Razorpay settlements, "
-    "bank statements, and internal ledgers - with confidence-scored matching "
-    "and an honest, auditable exception list."
+    "bank statements, and internal ledgers with confidence-scored matching "
+    "and an auditable exception list."
 )
 
 data = get_all_data()
@@ -119,7 +118,7 @@ with tab_exceptions:
     st.subheader("Honest Exception List")
     st.caption(
         "Cases the rule engine could not safely resolve. These are never "
-        "force-matched - they are flagged for human review."
+        "they are flagged for human review."
     )
     exceptions = data["exceptions"]
     if exceptions:
@@ -146,7 +145,7 @@ with tab_llm:
         "For ambiguous-but-resolved cases (fee deductions, date lags, partial "
         "settlements), an LLM generates a plain-language explanation. Every "
         "explanation is programmatically validated against the actual numbers "
-        "before being accepted - the LLM never makes the match decision itself."
+        "before being accepted, the LLM never makes the match decision itself."
     )
 
     audit_log = data["llm_audit_log"]
